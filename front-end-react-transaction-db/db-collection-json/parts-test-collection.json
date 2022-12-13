@@ -1,0 +1,89 @@
+[{
+  "_id": {
+    "$oid": "638e5236020ae608f5d8715f"
+  },
+  "partNumber": "P7865",
+  "partDescription": "PIPE FITTING",
+  "material": "STAINLESS Steel",
+  "cost": 30,
+  "sell": 75,
+  "profit": 45,
+  "margin": 60,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670271542579"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670271542579"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638e5701020ae608f5d8716f"
+  },
+  "partNumber": "86677899",
+  "partDescription": "SHIM 15mm ",
+  "material": "POM-H",
+  "cost": 25.34,
+  "sell": 89.44,
+  "profit": 64.1,
+  "margin": 71.66815742397137,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670272769018"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670272769018"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638e5f68020ae608f5d87188"
+  },
+  "partNumber": "P543890534890",
+  "partDescription": "ENGINE",
+  "material": "STEEL",
+  "cost": 10,
+  "sell": 31,
+  "profit": 21,
+  "margin": 67.74193548387096,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670274920682"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670274920682"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638fed0a8e24f6a2cb20a61f"
+  },
+  "partNumber": "P33322444",
+  "partDescription": "AIR SPRING",
+  "material": "RUBBER/STEEL",
+  "cost": 10,
+  "sell": 18,
+  "profit": 8,
+  "margin": 44.44444444444444,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670376714031"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670376714031"
+    }
+  },
+  "__v": 0
+}]

@@ -1,0 +1,50 @@
+[
+  {
+    "_id": {
+      "$oid": "638e5236020ae608f5d87772"
+    },
+    "quoteNumber": "RJE-0001",
+    "customer": "Amtrak",
+    "quoteParts": [
+      {
+        "part": {"$oid": "638e5236020ae608f5d8715f"},
+        "qty": 30
+      },
+      {
+        "part": {"$oid": "638e5f68020ae608f5d87188"},
+        "qty": 45
+      }
+    ]
+  },
+
+  {
+  "_id": {
+    "$oid": "638e5236020ae608f5d87777"
+  },
+  "quoteNumber": "RJE-0001",
+  "customer": "Amtrak",
+  "quoteParts": [
+    {
+      "$oid": "638e5236020ae608f5d8715f"
+    }
+  ]
+},
+
+{
+  "_id": {
+    "$oid": "638e5236020ae608f5d87111"
+  },
+  "quoteNumber": "RJE-0002",
+  "customer": "Amtrak",
+  "quoteParts": [
+    {
+      "$oid": "638e5236020ae608f5d8715f"
+    },
+    {
+      "$oid": "638fed0a8e24f6a2cb20a61f"
+    },
+    {
+      "$oid": "638e5f68020ae608f5d87188"
+    }
+  ]
+}]
