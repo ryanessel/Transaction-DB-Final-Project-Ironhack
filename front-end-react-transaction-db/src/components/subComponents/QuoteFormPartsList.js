@@ -75,43 +75,8 @@ return sum;
 
 
 }
-// const handleSubmit = (e) => {
-//     e.preventDefault();
-
-//     const requestBody = {
-//         cost,
-//         sell,
-//         no,
-//         partNumber,
-//         partDescription,
-//         material,
-//         //calculated
-//         profit,
-//         margin,
-//     }
 
 
-
-
-
-//     axios  
-//         .post(`${API_URL}/parts`, requestBody)
-//         .then((response) => {
-
-//             setCost("");
-//             setSell("");
-//             setPartNumber("");
-//             setPartDescription("");
-//             setMaterial("");
-
-
-
-//             props.refreshParts();
-//             // Navigate(`/movies`)
-//         })
-//         .catch((err) => console.log(err))
-
-//     }
 
 
 
@@ -140,8 +105,8 @@ const total = 0
       <th>PART NUMBER</th>  
       <th>DESCRIPTION</th>
       <th>MATERIAL</th>  
-      <th>COST</th>
-      <th>MARGIN %</th>
+      <th className='hideOnPrint'>COST</th>
+      <th  className='hideOnPrint'>MARGIN %</th>
       <th>QTY</th>
       <th>SELL</th>  
       <th>ROW TOTAL</th>
@@ -158,8 +123,20 @@ const total = 0
 
 {newParts.map((part, index) => {
 return (
-<QuoteFormRowExample part={part} index={index} updatePart={updatePart}  />
   
+// do I send the props through here?
+//do i get the part data from "parts"
+<QuoteFormRowExample part={part} index={index} updatePart={updatePart}  
+
+
+
+
+/>
+ 
+
+
+
+ 
 )
 
 })}
@@ -176,6 +153,7 @@ return (
   </table>
   {/* maybe a buttonn like submit i */}
  
+ <button>submit</button>
   </form>
   </div>
 

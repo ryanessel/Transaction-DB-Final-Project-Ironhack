@@ -45,7 +45,7 @@ const handleSubmit = (e) => {
         .post(`${API_URL}/quotes`, requestBody)
         .then((response) => {
 
-         console.log(response)
+         console.log("QUOTES POST TEST", response)
 
 
 
@@ -102,7 +102,7 @@ const handleSubmit = (e) => {
 
       </td>
 
-      <td>    <input className="quoteFormCost"
+      <td className='hideOnPrint'>    <input className="quoteFormCost"
         type="number"
         name="cost"
         value={cost}
@@ -111,7 +111,7 @@ const handleSubmit = (e) => {
     </td>
 
 
-    <td>
+    <td className='hideOnPrint' >
       <input className="quoteFormMargin"
         type="number"
         name="margin"
@@ -131,13 +131,18 @@ const handleSubmit = (e) => {
 
     <td type="number"
         name="sell"
-        value={sell} >
+        value={sell}
+        onChange={(e) => updatePart(e.target, index)}
+        disabled
+        >
+        
     {/* {Math.round(part.cost / (1 - (part.margin / 100))*100) / 100 } */}
       {part.sell= Math.round(part.cost / (1 - (part.margin / 100))*100) / 100}
+      {console.log("PART SELL", part.sell)}
       </td>
 
 
-{/* don't need the row total. can do it on the other pages */}
+{/* don't need  total in db obj. just calculate if  */}
     <td> 
 {((part.sell * 100 )  * ( part.qty)).toFixed(2) / 100}
 
@@ -146,6 +151,8 @@ const handleSubmit = (e) => {
 
     {/* NPM PACKAGE THAT FIXES floating point numbers maths issue. */}
      {/* <div>Big Decimal Test     {bigDecimal.multiply("9.72", "87")}</div> */}
+
+    
     </tr>
 
 
