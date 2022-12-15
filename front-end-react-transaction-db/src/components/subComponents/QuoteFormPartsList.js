@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import QuoteFormRowExample from './QuoteFormRowExample';
 import QuoteFormTotalBox from './QuoteFormTotalBox';
 import QuoteFormNotesBox from './QuoteFormNotesBox';
+import bigDecimal from 'js-big-decimal';
 const API_URL = `http://localhost:5005`
 
  function QuoteFormPartsList (props) {
@@ -65,8 +66,8 @@ const getGrandTotal = () => {
   let sum = 0;
 
   newParts.map((thePart) => {
-    const allRowTotals = (Math.round((thePart.cost /(1 - (thePart.margin/ 100)) * thePart.qty)*100) / 100)
-    sum += allRowTotals
+    const allRowTotals = ((thePart.sell * 100 )  * ( thePart.qty)).toFixed(2) / 100
+    sum = bigDecimal.add (sum,  allRowTotals)
 
 
   })

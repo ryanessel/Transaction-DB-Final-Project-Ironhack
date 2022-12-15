@@ -446,8 +446,8 @@ width: 85vw;
 
 
 .quoteFormTotalBox {
- columns: black;
- margin-left: 416px;
+ color: black;
+ margin-left: -178px;
  
 }
 
@@ -474,7 +474,34 @@ width: 85vw;
   flex-direction: row-reverse;
   margin-top: 20px;
 }
+
+.quoteFormQty {
+  width: 3vw;
+}
+
+
+.quoteFormMargin {
+  width: 3vw;
+}
+
+.quoteFormCost {
+  width: 3vw !important;
+}
+
+.quoteFormNo {
+  width: 2vw;
+}
+
+
+.flexQuoteFromNoteBox table {
+  width: 16vw;
+}
+
       /* GENERIC STYLING NO POSITIONING */
+
+
+
+
 
 
   .TableHeadQuoteForm th {

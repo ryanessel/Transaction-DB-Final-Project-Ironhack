@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react'
 import { useEffect, useState } from 'react';
+import bigDecimal from 'js-big-decimal';
 
 const API_URL = `http://localhost:5005`
 
@@ -68,14 +69,14 @@ const handleSubmit = (e) => {
 
 
     <tr>
-    <td>    <input className="addMovieInput"
+    <td>    <input className="quoteFormNo"
         type="string"
         name="no"
         value={no}
         onChange={(e) => updatePart(e.target, index)}
     />
     </td>
-      <td>    <input className="addMovieInput"
+      <td>    <input className="quoteFormPartNumber"
         type="string"
         name="partNumber"
         value={partNumber}
@@ -83,7 +84,7 @@ const handleSubmit = (e) => {
     />
     </td>
 
-      <td>    <input className="addMovieInput"
+      <td>    <input className="quoteFormPartDescription"
         type="string"
         name="partDescription"
         value={partDescription}
@@ -92,7 +93,7 @@ const handleSubmit = (e) => {
     </td>
 
       <td>
-      <input className="addMovieInput"
+      <input className="quoteFormMaterial"
         type="string"
         name="material"
         value={material}
@@ -101,7 +102,7 @@ const handleSubmit = (e) => {
 
       </td>
 
-      <td>    <input className="addMovieInput"
+      <td>    <input className="quoteFormCost"
         type="number"
         name="cost"
         value={cost}
@@ -111,7 +112,7 @@ const handleSubmit = (e) => {
 
 
     <td>
-      <input className="addMovieInput"
+      <input className="quoteFormMargin"
         type="number"
         name="margin"
         value={margin}
@@ -120,7 +121,7 @@ const handleSubmit = (e) => {
       </td>
 
 
-    <td>    <input className="addMovieInput"
+    <td>    <input className="quoteFormQty"
         type="number"
         name="qty"
         value={qty}
@@ -131,15 +132,20 @@ const handleSubmit = (e) => {
     <td type="number"
         name="sell"
         value={sell} >
-    {Math.round(part.cost / (1 - (part.margin / 100))*100) / 100 }
+    {/* {Math.round(part.cost / (1 - (part.margin / 100))*100) / 100 } */}
+      {part.sell= Math.round(part.cost / (1 - (part.margin / 100))*100) / 100}
       </td>
 
 
 {/* don't need the row total. can do it on the other pages */}
     <td> 
-{(Math.round((part.cost /(1 - (part.margin/ 100)) * part.qty)*100) / 100)}
+{((part.sell * 100 )  * ( part.qty)).toFixed(2) / 100}
+
       </td>
      
+
+    {/* NPM PACKAGE THAT FIXES floating point numbers maths issue. */}
+     {/* <div>Big Decimal Test     {bigDecimal.multiply("9.72", "87")}</div> */}
     </tr>
 
 
