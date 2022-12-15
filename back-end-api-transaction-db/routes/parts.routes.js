@@ -38,7 +38,8 @@ router.post('/parts', (req, res, next) => {
         margin, 
         partNumber,
         partDescription,
-        material, } = req.body;
+        material,
+        test } = req.body;
 
     Part.create({
         cost, 
@@ -47,7 +48,8 @@ router.post('/parts', (req, res, next) => {
         margin, 
         partNumber,
         partDescription,
-        material,})
+        material,
+        test})
         .then(newPart => res.json(newPart))
         .catch(err => res.json(err));
 

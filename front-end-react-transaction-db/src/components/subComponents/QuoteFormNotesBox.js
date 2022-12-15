@@ -2,7 +2,7 @@ import React from 'react'
 
 function QuoteFormNotesBox() {
   return (
-    <div>
+    <div className='flexQuoteFromNoteBox'>
         
         
 <table className='addPartTableQuoteForm'>

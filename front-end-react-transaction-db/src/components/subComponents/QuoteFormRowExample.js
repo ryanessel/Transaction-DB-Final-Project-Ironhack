@@ -4,16 +4,23 @@ import { useEffect, useState } from 'react';
 
 const API_URL = `http://localhost:5005`
 
- function QuoteFormRowExample(props) {
-    const [cost, setCost ] = useState("")
-    const [sell, setSell ] = useState("")
-    const [profit, setProfit ] = useState("")
-    const [margin, setMargin ] = useState("")
-    const [no, setNo] = useState("");
-    const [partNumber, setPartNumber ] = useState("")
-    const [partDescription, setPartDescription ] = useState("")
-    const [material, setMaterial ] = useState("")
-            
+ function QuoteFormRowExample({part, updatePart, index, grandTotal}) {
+ const {         cost,
+  margin,
+  qty,
+  sell ,
+ 
+  no,
+  partNumber,
+  partDescription,
+  material,
+
+  //calculated
+  profit,
+  } = part
+
+
+            //build
 const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -34,18 +41,14 @@ const handleSubmit = (e) => {
 
 
     axios  
-        .post(`${API_URL}/parts`, requestBody)
+        .post(`${API_URL}/quotes`, requestBody)
         .then((response) => {
 
-            setCost("");
-            setSell("");
-            setPartNumber("");
-            setPartDescription("");
-            setMaterial("");
+         console.log(response)
 
 
 
-            props.refreshParts();
+          
             // Navigate(`/movies`)
         })
         .catch((err) => console.log(err))
@@ -67,16 +70,16 @@ const handleSubmit = (e) => {
     <tr>
     <td>    <input className="addMovieInput"
         type="string"
-        name="No."
+        name="no"
         value={no}
-        onChange={(e) => setNo(e.target.value)}
+        onChange={(e) => updatePart(e.target, index)}
     />
     </td>
       <td>    <input className="addMovieInput"
         type="string"
-        name="partNubmer"
+        name="partNumber"
         value={partNumber}
-        onChange={(e) => setPartNumber(e.target.value)}
+        onChange={(e) => updatePart(e.target, index)}
     />
     </td>
 
@@ -84,7 +87,7 @@ const handleSubmit = (e) => {
         type="string"
         name="partDescription"
         value={partDescription}
-        onChange={(e) => setPartDescription(e.target.value)}
+        onChange={(e) => updatePart(e.target, index)}
     />
     </td>
 
@@ -93,7 +96,7 @@ const handleSubmit = (e) => {
         type="string"
         name="material"
         value={material}
-        onChange={(e) => setMaterial(e.target.value)}
+        onChange={(e) => updatePart(e.target, index)}
     />
 
       </td>
@@ -102,20 +105,43 @@ const handleSubmit = (e) => {
         type="number"
         name="cost"
         value={cost}
-        onChange={(e) => setCost(e.target.value)}
+        onChange={(e) => updatePart(e.target, index)}
     />
     </td>
 
-      <td>
+
+    <td>
       <input className="addMovieInput"
         type="number"
-        name="sell"
-        value={sell}
-        onChange={(e) => setSell(e.target.value)}
+        name="margin"
+        value={margin}
+        onChange={(e) => updatePart(e.target, index)}
+    /> 
+      </td>
+
+
+    <td>    <input className="addMovieInput"
+        type="number"
+        name="qty"
+        value={qty}
+        onChange={(e) => updatePart(e.target, index)}
     />
+    </td>
+
+    <td type="number"
+        name="sell"
+        value={sell} >
+    {Math.round(part.cost / (1 - (part.margin / 100))*100) / 100 }
+      </td>
+
+
+{/* don't need the row total. can do it on the other pages */}
+    <td> 
+{(Math.round((part.cost /(1 - (part.margin/ 100)) * part.qty)*100) / 100)}
       </td>
      
     </tr>
+
 
  
 

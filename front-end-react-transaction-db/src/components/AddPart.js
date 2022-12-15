@@ -12,6 +12,7 @@ const API_URL = `http://localhost:5005`
     const [partNumber, setPartNumber ] = useState("")
     const [partDescription, setPartDescription ] = useState("")
     const [material, setMaterial ] = useState("")
+    const [test, setTest] = useState(5)
             
 const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,6 +26,7 @@ const handleSubmit = (e) => {
         //calculated
         profit,
         margin,
+        test
     }
 
 
@@ -51,7 +53,11 @@ const handleSubmit = (e) => {
     }
 
 
+const setSellVal = () => {
 
+setSell(3)
+return sell
+}
 
 
   return (
@@ -110,6 +116,7 @@ const handleSubmit = (e) => {
     </td>
 
       <td>
+     
       <input className="addMovieInput"
         type="number"
         name="sell"
@@ -117,6 +124,8 @@ const handleSubmit = (e) => {
         onChange={(e) => setSell(e.target.value)}
     />
       </td>
+     
+
      
     </tr>
 

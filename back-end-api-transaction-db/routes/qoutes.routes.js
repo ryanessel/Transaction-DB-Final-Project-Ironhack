@@ -8,7 +8,7 @@ const Part = require("../models/Part.model")
 //GET ROUTE - ALL QUOTES
 router.get("/quotes", (req, res, next) => {
 Quote.find()
-.populate("quoteParts")
+.populate("quoteParts.part")
 .then((allQuotes) =>  res.json(allQuotes))
 .catch(error => res.json(error))
 });
@@ -18,19 +18,22 @@ Quote.find()
 //GET QUOTE DETAILS ID
 router.get("/quote/:quoteId", (req, res, next) => {
     const { quoteId } = req.params;
-
+console.log("quoteID",quoteId)
     
     Quote.findById(quoteId)
     .populate("quoteParts.part") // the parts that exist 
     .then((theQuote) => { 
-     const theQty =  theQuote.quoteParts[0].qty
-     const theSell = theQuote.quoteParts[0].part.sell
-     const theCost = theQuote.quoteParts[0].part.cost
+        console.log("THEQYOTE", theQuote)
 
 
-        //  theQuote.totalSell = theSell * theQty;
-        //  theQuote.totalCost = theCost * theQty;
-        //  theQuote.totalProfit = theQuote.totalSell - theQuote.totalCost;
+//      const theQty =  theQuote.quoteParts[0].qty
+//      const theSell = theQuote.quoteParts[0].part.sell
+//      const theCost = theQuote.quoteParts[0].part.cost
+
+
+//         //  theQuote.totalSell = theSell * theQty;
+//         //  theQuote.totalCost = theCost * theQty;
+//         //  theQuote.totalProfit = theQuote.totalSell - theQuote.totalCost;
         
 // adding new keys to the quote array
         theQuote.totalSell = 0
@@ -46,8 +49,8 @@ router.get("/quote/:quoteId", (req, res, next) => {
             console.log("※※※multiplication check※※※", thePart.part.cost * thePart.qty)
 
             theQuote.totalCost += (thePart.part.cost * thePart.qty)
-            theQuote.totalSell += (thePart.part.sell * thePart.qty)
-            theQuote.totalProfit = (theQuote.totalSell - theQuote.totalCost)
+            theQuote.totalSell += (thePart.part.sell * thePart.qty) 
+            theQuote.totalProfit = (theQuote.totalSell * 100 - theQuote.totalCost * 100 ) / 100
             theQuote.marginPercent = ((theQuote.totalProfit * 100 / theQuote.totalSell * 100) / 100 )
         })
 
@@ -99,8 +102,3 @@ router.get("/quote/:quoteId", (req, res, next) => {
 
 
     module.exports = router;
-
-
-
-
-

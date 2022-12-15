@@ -2,66 +2,135 @@ import axios from 'axios';
 import React from 'react'
 import { useEffect, useState } from 'react';
 import QuoteFormRowExample from './QuoteFormRowExample';
-
+import QuoteFormTotalBox from './QuoteFormTotalBox';
+import QuoteFormNotesBox from './QuoteFormNotesBox';
 const API_URL = `http://localhost:5005`
 
  function QuoteFormPartsList (props) {
-    const [cost, setCost ] = useState("")
-    const [sell, setSell ] = useState("")
-    const [profit, setProfit ] = useState("")
-    const [margin, setMargin ] = useState("")
-    const [no, setNo] = useState("");
-    const [partNumber, setPartNumber ] = useState("")
-    const [partDescription, setPartDescription ] = useState("")
-    const [material, setMaterial ] = useState("")
-            
-const handleSubmit = (e) => {
-    e.preventDefault();
+const [grandTotal, setGrandTotal] =useState(0)
+//everyrthing typed
+    const [newParts, setNewParts] = useState([{
 
-    const requestBody = {
-        cost,
-        sell,
-        no,
-        partNumber,
-        partDescription,
-        material,
-        //calculated
-        profit,
-        margin,
-    }
+      no: "",
+      partNumber: "",
+      partDescription: "",
+      material: "",
+      cost: "",
+      margin: "",
+      qty: "",
+      sell:"",
+      rowTotal: "",
+      profit: "",
+     
+   
 
 
+  } ])
+          
+  
+  console.log(newParts)
+const addRow = () => {
+const copyNewParts = [...newParts]; // makes a copay of aarray
+copyNewParts.push({      
+no: "",
+partNumber: "",
+partDescription: "",
+material: "",
+cost: "",
+margin: "",
+qty:"",
+sell:"",
+rowTotal: "",
+profit: "",
 
 
-
-    axios  
-        .post(`${API_URL}/parts`, requestBody)
-        .then((response) => {
-
-            setCost("");
-            setSell("");
-            setPartNumber("");
-            setPartDescription("");
-            setMaterial("");
-
-
-
-            props.refreshParts();
-            // Navigate(`/movies`)
-        })
-        .catch((err) => console.log(err))
-
-    }
+})
 
 
 
+setNewParts(copyNewParts);
+}
+
+
+const deleteRow = () => {
+
+  const copyNewParts = [...newParts]; // makes a copay of aarray
+copyNewParts.pop();
+setNewParts(copyNewParts);
+}
+
+
+
+const getGrandTotal = () => {
+  let sum = 0;
+
+  newParts.map((thePart) => {
+    const allRowTotals = (Math.round((thePart.cost /(1 - (thePart.margin/ 100)) * thePart.qty)*100) / 100)
+    sum += allRowTotals
+
+
+  })
+return sum;
+
+
+}
+// const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     const requestBody = {
+//         cost,
+//         sell,
+//         no,
+//         partNumber,
+//         partDescription,
+//         material,
+//         //calculated
+//         profit,
+//         margin,
+//     }
+
+
+
+
+
+//     axios  
+//         .post(`${API_URL}/parts`, requestBody)
+//         .then((response) => {
+
+//             setCost("");
+//             setSell("");
+//             setPartNumber("");
+//             setPartDescription("");
+//             setMaterial("");
+
+
+
+//             props.refreshParts();
+//             // Navigate(`/movies`)
+//         })
+//         .catch((err) => console.log(err))
+
+//     }
+
+
+
+const updatePart = (target, index) => {
+console.log(target.value, target.name, index)
+const partsCopy = [...newParts];
+partsCopy[index][target.name] = target.value
+setNewParts(partsCopy);
+}
+
+const total = 0
 
 
   return (
-    <div className='addPartBox'>
+    <div className='quoteFormPartsList'>
      
-
-        <form className="addMovieForm"onSubmit={handleSubmit}>
+     <button onClick={addRow}> + </button>
+  <button onClick={deleteRow}> - </button>
+  <div className='flexQuotePartList'>
+        <form >
 <table className='addPartTable'>
 
    <thead className='addPartTableHead'>
@@ -71,70 +140,33 @@ const handleSubmit = (e) => {
       <th>DESCRIPTION</th>
       <th>MATERIAL</th>  
       <th>COST</th>
+      <th>MARGIN %</th>
+      <th>QTY</th>
       <th>SELL</th>  
+      <th>ROW TOTAL</th>
      
     </tr>
   </thead>
 
 
   <tbody>
-    <tr>
-    <td>    <input className="addMovieInput"
-        type="string"
-        name="No."
-        value={no}
-        onChange={(e) => setNo(e.target.value)}
-    />
-    </td>
-      <td>    <input className="addMovieInput"
-        type="string"
-        name="partNubmer"
-        value={partNumber}
-        onChange={(e) => setPartNumber(e.target.value)}
-    />
-    </td>
 
-      <td>    <input className="addMovieInput"
-        type="string"
-        name="partDescription"
-        value={partDescription}
-        onChange={(e) => setPartDescription(e.target.value)}
-    />
-    </td>
-
-      <td>
-      <input className="addMovieInput"
-        type="string"
-        name="material"
-        value={material}
-        onChange={(e) => setMaterial(e.target.value)}
-    />
-
-      </td>
-
-      <td>    <input className="addMovieInput"
-        type="number"
-        name="cost"
-        value={cost}
-        onChange={(e) => setCost(e.target.value)}
-    />
-    </td>
-
-      <td>
-      <input className="addMovieInput"
-        type="number"
-        name="sell"
-        value={sell}
-        onChange={(e) => setSell(e.target.value)}
-    />
-      </td>
-     
-    </tr>
     {/* THESE ARE EXTRA ROWS NEED TO ADD THEM AUTOMICALLY */}
     {/* THE ROWS NEED ACCESS TO THE parts database so  i can have it auto populate when the part number is correct */}
-<QuoteFormRowExample/>
-<QuoteFormRowExample/>
 
+
+{newParts.map((part, index) => {
+return (
+<QuoteFormRowExample part={part} index={index} updatePart={updatePart}  />
+  
+)
+
+})}
+
+
+{/* make 3 object, show 1 row for each object, map over them  */}
+
+{/* 3 blank parts lik */}
 
     
 
@@ -142,13 +174,21 @@ const handleSubmit = (e) => {
 
   </table>
   {/* maybe a buttonn like submit i */}
+ 
   </form>
+  </div>
+
+
+
+
+
 
   
-        <div className='addPartInput'>
- 
-
-
+        <div className='flexTotalAndNoteBox'>
+  
+        <QuoteFormTotalBox grandTotal={getGrandTotal}/>
+        <QuoteFormNotesBox/>
+     
         </div>
     </div>
   )

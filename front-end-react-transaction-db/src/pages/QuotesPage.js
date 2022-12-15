@@ -1,5 +1,6 @@
 //NAVBAR POSTION IS FIXED
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import AddQuote from '../components/AddQuote';
 import AddPart from '../components/AddPart';
@@ -44,12 +45,12 @@ getAllQuotes();
         return (
             <div>
                 <div key={quote._id} className='quoteBox'>
-                    <h2>Quote # {quote.quoteNumber}</h2>
+                   <Link to={`/quote/${quote._id}`}> <h2>Quote # {quote.quoteNumber}</h2></Link>
                       <h2>Customer: {quote.customer}</h2>  
                     <div className='quotedParts'>
                         {quote.quoteParts.map((quotePart) => {
                             return(
-                                <div className='quotePart'>
+                                <div key={quotePart._id} className='quotePart'>
                                     <hr />
                                     <div>PN: {quotePart.partNumber}</div>
                                     <div>Description: {quotePart.partDescription}</div>

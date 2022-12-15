@@ -27,7 +27,7 @@ import { Routes, Route } from 'react-router-dom';
 
 
 
-
+import TestComponent from './components/TestComponent';
 
 function App() {
 const {isLoggedIn} =
@@ -38,7 +38,7 @@ const {isLoggedIn} =
 
   return (
     <div className="App">
- 
+ <TestComponent/>
 {/* may not be needed */}
  {/* {isLoggedIn ? <EchangeApi/> : ""}  */}
 
@@ -46,16 +46,19 @@ const {isLoggedIn} =
 <Routes>
 <Route path="/" element={<HomePage />}/>
 <Route path="/ex" element={<EchangeApi />}/>
-  <Route path={`/parts`} element={<IsPrivate><PartsPage/></IsPrivate>}/>
-  <Route path={`/part/:partId`} element={<IsPrivate><PartDetails/></IsPrivate>}/>
-  <Route path={`/quotes`} element={<IsPrivate><QuotesPage/></IsPrivate>}/>
-  <Route path={`/quote/:quoteId`} element={<IsPrivate><QuoteDetailsPage/> </IsPrivate>}/>
+
+{/* Is Private */}
+  <Route path={`/parts`} element={<PartsPage/>}/>
+  <Route path={`/part/:partId`} element={<PartDetails/>}/>
+  <Route path={`/quotes`} element={<QuotesPage/>}/>
+  <Route path={`/quote/:quoteId`} element={<QuoteDetailsPage/> }/>
   {/* this will be a component  - this is just for testing purposes now */}
   <Route path={`/quoteForm`} element={<QuoteForm/>}/>
 
 {/* AUTH ROUTES */}
-  <Route path={`/signup`} element={<IsAnon><SignupPage/></IsAnon>}/>
-  <Route path={`/login`} element={<IsAnon><LoginPage/></IsAnon>}/>
+{/* isAnon */}
+  <Route path={`/signup`} element={<SignupPage/>}/>
+  <Route path={`/login`} element={<LoginPage/>}/>
 </Routes>
 
 

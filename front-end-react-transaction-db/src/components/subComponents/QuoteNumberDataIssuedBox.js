@@ -1,6 +1,6 @@
 import React from 'react'
 
-function QuoteNumberDataIssuedBox() {
+function QuoteNumberDataIssuedBox(props) {
   return (
     <div className='quoteNumberBox'>
         

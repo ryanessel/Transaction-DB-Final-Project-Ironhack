@@ -26,6 +26,7 @@ const partSchema = new Schema(
         type: Number,
         set: calculateMargin
     },
+    test: Number,
 
   
 

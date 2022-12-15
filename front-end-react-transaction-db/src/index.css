@@ -208,9 +208,7 @@ width: 85vw;
   margin: auto;
   
 
-  position: relative;
-  right: 515px;
-  top: 35px;
+
   
 }
 
@@ -227,7 +225,256 @@ width: 85vw;
   }
 
 
-  /* GENERIC STYLING NO POSITIONING */
+
+
+/* 
+    .quoteNumberBox {
+      position: relative;
+      left: 515px;
+      bottom: 120px;
+    }
+
+
+    .customerBoxInfo {
+      position: relative;
+      right: 515px;
+      top: 54px;
+
+
+    } */
+
+
+
+    .quoteFormPartsList {
+      position: relative;
+      top: 20px;
+      margin-bottom: 20px;
+      margin-top: 20px;
+
+    }
+
+
+    .signatureLine {
+      position: relative;
+      left: 515px;
+    }
+
+    .quoteRecordNumTag {
+
+      position: relative;
+      left: 238px;
+      bottom: 105px;
+      margin-bottom: 30px
+    }
+
+    .quoteRecord {
+      border: 3px solid grey;
+      width: 65vw;
+        margin: auto;
+        margin-top: 15px;
+        margin-bottom: 5px;
+        background-color: #85A4CC;
+        /* border-radius: 1%; */
+        box-shadow: 10px 7px  black;
+        padding: 50px 0;
+
+    }
+
+
+
+
+
+
+    .quoteRecordTable th {
+      border: 3px solid grey;
+      background-color: rgb(204, 173, 133);
+    }
+    
+    
+    .quoteRecordTable {
+      border-collapse: collapse;
+      box-shadow: 10px 7px black;
+      width: 25vw;
+      margin: auto;
+      
+    
+  
+    }
+    
+    
+    .quoteRecordTable tr {
+      
+      background-color: white;
+      
+       
+      }
+      
+      .quoteRecordTable td {
+        border: 3px solid grey;
+      }
+
+
+
+
+
+ 
+
+
+  
+  
+
+    .quoteRecordTotalBox {
+
+      position: relative;
+      left: 405px;
+    
+
+    }
+/* -------------------------------------------------------- */
+    .recTotal th {
+      border: 3px solid grey;
+      background-color: rgb(204, 173, 133);
+    }
+
+    .recTotal {
+      border-collapse: collapse;
+      box-shadow: 10px 7px black;
+      width: 8vw;
+      margin: auto;
+       
+    }
+
+
+
+    .recTotal tr {
+      
+      background-color: white;
+      
+       
+      }
+    
+
+
+
+      .recTotal td {
+      
+        border: 3px solid grey;
+        
+         
+        }
+
+
+
+ .customerRecordInfo {
+   position: relative;
+   right: 305px;
+   top: 55px;
+ }
+
+
+.customerInfoRecordTable {
+  border-collapse: collapse;
+  box-shadow: 10px 7px black;
+  width: 18vw;
+  margin: auto;
+  
+
+}
+
+
+.customerInfoRecordTable  th {
+  border: 3px solid grey;
+  background-color: rgb(204, 173, 133);
+  
+
+}
+
+.customerInfoRecordTable  tr {
+ background-color: white;
+
+  
+
+}
+
+
+.customerInfoRecordTable  td {
+  border: 3px solid grey;
+ 
+   
+ 
+ }
+
+
+
+ .quoteRecordNotes {
+
+
+  position: relative;
+  right: 305px;
+  top: 80px;
+
+
+ }
+
+
+ .quoteRecordNotesTable {
+  border-collapse: collapse;
+  box-shadow: 10px 7px black;
+  width: 18vw;
+  margin: auto;
+
+ }
+
+ .quoteRecordNotesTable th {
+  border: 3px solid grey;
+  background-color: rgb(204, 173, 133);
+  
+
+ }
+ .quoteRecordNotesTable tr  {
+  background-color: white;
+
+ }
+
+ .quoteRecordNotesTable  td {
+  border: 3px solid grey;
+
+ }
+
+/* ------------------------------- */
+
+
+
+.quoteFormTotalBox {
+ columns: black;
+ margin-left: 416px;
+ 
+}
+
+
+
+
+.quoteTopData {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.flexQuotePartList {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+.flexTotalAndNoteBox {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+  margin-top: 20px;
+}
+      /* GENERIC STYLING NO POSITIONING */
 
 
   .TableHeadQuoteForm th {
@@ -256,20 +503,4 @@ width: 85vw;
     
     .TableQuoteForm td {
       border: 3px solid grey;
-    }
-
-
-    .quoteNumberBox {
-      position: relative;
-      left: 515px;
-      bottom: 120px;
-    }
-
-
-    .customerBoxInfo {
-      position: relative;
-      right: 515px;
-      top: 54px;
-
-
     }

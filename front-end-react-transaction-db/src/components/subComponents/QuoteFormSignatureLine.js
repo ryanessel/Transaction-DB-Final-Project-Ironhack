@@ -9,9 +9,9 @@ const {user} = useContext(AuthContext);
 
 
   return (
-    <div>
+    <div className='signatureLine'>
     
-    <h4>SIGN HERE <i>{user && user.name}</i>  _____________________________</h4>
+    <h4>Signed by, <i>{user && user.name}</i>  ______________________________________</h4>
 
     </div>
   )
