@@ -56,7 +56,7 @@ console.log(test)
 
   return (
     <div>
-
+<p>submit static input data TEST</p>
     <form onSubmit={handleSubmit}>
 <input
 type="number" 

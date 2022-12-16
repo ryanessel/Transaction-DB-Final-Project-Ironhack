@@ -56,4 +56,22 @@ router.post('/parts', (req, res, next) => {
 });
 
 
+// PUT(edit)  /api/projects/:projectId  -  Updates a specific project by id
+router.put("/part/:partId", (req, res, next) => {
+    const { partId } = req.params;
+// if the project id doesn't exist then you and error message is thrown.
+    if(!mongoose.Types.ObjectId.isValid(partId)) {
+        res.status(400).json({message: "Specified id is not valid (may not exist)"});
+        return;
+    }
+//...If it the id does exist it will find and update the projcet. havint "new: true " will show the page wit hthe updated info.
+    Part.findByIdAndUpdate(partId, req.body, { new: true })
+    .then((updatedPart) => res.json(updatedPart))
+    .catch(error => res.json(error));
+
+
+})
+
+
+
 module.exports = router;

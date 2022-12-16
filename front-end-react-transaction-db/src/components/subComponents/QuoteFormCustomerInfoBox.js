@@ -1,6 +1,7 @@
 import React from 'react'
 
- function QuoteFormCustomerInfoBox() {
+ function QuoteFormCustomerInfoBox({updateCusInfo,
+  cusInfo}) {
   return (
     <div className='customerBoxInfo'>
         
@@ -20,6 +21,9 @@ import React from 'react'
  <td >
     <input 
     type="text"
+    value={cusInfo.customer}
+    onChange={(e)=>{updateCusInfo(e, "customer")}}
+
      />
  </td> 
  
@@ -34,6 +38,8 @@ import React from 'react'
  <td >
     <input
     type="text"
+value={cusInfo.contact}
+onChange={(e)=>{updateCusInfo(e, "contact")}}
      />
  </td> 
  
@@ -49,6 +55,8 @@ import React from 'react'
  <td >
     <textarea
     type="text"
+    value={cusInfo.address}
+    onChange={(e)=>{updateCusInfo(e, "address")}}
      />
  </td> 
  

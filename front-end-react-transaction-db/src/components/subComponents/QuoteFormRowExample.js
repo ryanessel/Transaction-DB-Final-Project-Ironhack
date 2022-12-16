@@ -22,39 +22,39 @@ const API_URL = `http://localhost:5005`
 
 
             //build
-const handleSubmit = (e) => {
-    e.preventDefault();
+// const handleSubmit = (e) => {
+//     e.preventDefault();
 
-    const requestBody = {
-        cost,
-        sell,
-        no,
-        partNumber,
-        partDescription,
-        material,
-        //calculated
-        profit,
-        margin,
-    }
-
-
+//     const requestBody = {
+//         cost,
+//         sell,
+//         no,
+//         partNumber,
+//         partDescription,
+//         material,
+//         //calculated
+//         profit,
+//         margin,
+//     }
 
 
 
-    axios  
-        .post(`${API_URL}/quotes`, requestBody)
-        .then((response) => {
 
-         console.log("QUOTES POST TEST", response)
+
+//     axios  
+//         .post(`${API_URL}/quotes`, requestBody)
+//         .then((response) => {
+
+//          console.log("QUOTES POST TEST", response)
 
 
 
           
-            // Navigate(`/movies`)
-        })
-        .catch((err) => console.log(err))
+//             // Navigate(`/movies`)
+//         })
+//         .catch((err) => console.log(err))
 
-    }
+//     }
 
 
 

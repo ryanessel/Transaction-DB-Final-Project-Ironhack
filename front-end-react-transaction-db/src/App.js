@@ -48,17 +48,17 @@ const {isLoggedIn} =
 <Route path="/ex" element={<EchangeApi />}/>
 
 {/* Is Private */}
-  <Route path={`/parts`} element={<PartsPage/>}/>
-  <Route path={`/part/:partId`} element={<PartDetails/>}/>
-  <Route path={`/quotes`} element={<QuotesPage/>}/>
-  <Route path={`/quote/:quoteId`} element={<QuoteDetailsPage/> }/>
+  <Route path={`/parts`} element={<IsPrivate><PartsPage/></IsPrivate>}/>
+  <Route path={`/part/:partId`} element={<IsPrivate><PartDetails/></IsPrivate>}/>
+  <Route path={`/quotes`} element={<IsPrivate><QuotesPage/></IsPrivate>}/>
+  <Route path={`/quote/:quoteId`} element={<IsPrivate><QuoteDetailsPage/></IsPrivate> }/>
   {/* this will be a component  - this is just for testing purposes now */}
-  <Route path={`/quoteForm`} element={<QuoteForm/>}/>
+  <Route path={`/quoteForm`} element={<IsPrivate><QuoteForm/></IsPrivate>}/>
 
 {/* AUTH ROUTES */}
 {/* isAnon */}
-  <Route path={`/signup`} element={<SignupPage/>}/>
-  <Route path={`/login`} element={<LoginPage/>}/>
+  <Route path={`/signup`} element={<IsAnon><SignupPage/></IsAnon>}/>
+  <Route path={`/login`} element={<IsAnon><LoginPage/></IsAnon>}/>
 </Routes>
 
 

@@ -1,6 +1,7 @@
 import React from 'react'
 
-function QuoteFormNotesBox() {
+function QuoteFormNotesBox({updateNotes,
+  noteInfo}) {
   return (
     <div className='flexQuoteFromNoteBox'>
         
@@ -20,8 +21,11 @@ function QuoteFormNotesBox() {
 <tbody>
  <tr>
  <td className='quoteNotes'>
-    <textarea>
- </textarea> 
+ <textarea
+    type="text"
+    value={noteInfo.notes}
+    onChange={(e)=>{updateNotes(e, "notes")}}
+     />
  </td>
   
  </tr>

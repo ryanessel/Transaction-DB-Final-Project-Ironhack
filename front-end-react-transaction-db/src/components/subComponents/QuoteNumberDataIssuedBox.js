@@ -1,6 +1,7 @@
 import React from 'react'
 
-function QuoteNumberDataIssuedBox(props) {
+function QuoteNumberDataIssuedBox({updateQteInfo,
+  qteInfo}) {
   return (
     <div className='quoteNumberBox'>
         
@@ -23,17 +24,26 @@ function QuoteNumberDataIssuedBox(props) {
  <td >
     <input 
     type="text"
+    value={qteInfo.quoteNumber}
+    onChange={(e)=>{updateQteInfo(e , "quoteNumber" )}}
+
      />
  </td>
  <td >
  <input 
     type="text"
+    value={qteInfo.dateIssued}
+    onChange={(e)=>{updateQteInfo(e, "dateIssued")}}
+
      />
  </td>
 
  <td >
  <input 
     type="text"
+    value={qteInfo.validity}
+    onChange={(e)=>{updateQteInfo(e, "validity")}}
+
      />
  </td>
   

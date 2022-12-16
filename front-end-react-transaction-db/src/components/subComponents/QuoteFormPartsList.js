@@ -7,26 +7,27 @@ import QuoteFormNotesBox from './QuoteFormNotesBox';
 import bigDecimal from 'js-big-decimal';
 const API_URL = `http://localhost:5005`
 
- function QuoteFormPartsList (props) {
+ function QuoteFormPartsList ({newParts,
+  setNewParts}) {
 const [grandTotal, setGrandTotal] =useState(0)
 //everyrthing typed
-    const [newParts, setNewParts] = useState([{
+  //   const [newParts, setNewParts] = useState([{
 
-      no: "",
-      partNumber: "",
-      partDescription: "",
-      material: "",
-      cost: "",
-      margin: "",
-      qty: "",
-      sell:"",
-      rowTotal: "",
-      profit: "",
+  //     no: "",
+  //     partNumber: "",
+  //     partDescription: "",
+  //     material: "",
+  //     cost: "",
+  //     margin: "",
+  //     qty: "",
+  //     sell:"",
+  //     rowTotal: "",
+  //     profit: "",
      
    
 
 
-  } ])
+  // } ])
           
   
   console.log(newParts)
@@ -126,12 +127,7 @@ return (
   
 // do I send the props through here?
 //do i get the part data from "parts"
-<QuoteFormRowExample part={part} index={index} updatePart={updatePart}  
-
-
-
-
-/>
+<QuoteFormRowExample part={part} index={index} updatePart={updatePart}  />
  
 
 
@@ -166,7 +162,7 @@ return (
         <div className='flexTotalAndNoteBox'>
   
         <QuoteFormTotalBox grandTotal={getGrandTotal}/>
-        <QuoteFormNotesBox/>
+       
      
         </div>
     </div>

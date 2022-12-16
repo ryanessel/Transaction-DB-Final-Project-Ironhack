@@ -32,7 +32,7 @@ function AuthPRoviderWrapper(props) {
             {headers: {Authorization: `Bearer ${storedToken}`}})
             .then((response) => {
                 //if server verifies that JWT is valid
-                const user = response.data;
+                const user = {...response.data};
                 //Update state variables
             
                console.log("HEADERS?",response)
@@ -41,7 +41,7 @@ function AuthPRoviderWrapper(props) {
                 setIsLoading(false);
                 setUser(user);
 
-                console.log("Checking Log in status",isLoggedIn)
+               
             })
             .catch((error) => {
                 //in the case of invalid token/password hashs don't match
@@ -65,6 +65,9 @@ function AuthPRoviderWrapper(props) {
         localStorage.removeItem("authToken");
 
     }
+    
+    console.log("Checking Log in status",isLoggedIn)
+
 
     const logOutUser = () => {
 

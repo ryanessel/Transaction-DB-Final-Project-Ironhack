@@ -29,7 +29,7 @@ grandtotal,
  <QuoteFormNotesBox/>
 notes
 
-
+**maybe don't do the auot fill in parts thing**
 
 
 customer,
