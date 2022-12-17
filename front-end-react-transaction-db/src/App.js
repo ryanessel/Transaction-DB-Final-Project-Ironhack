@@ -38,7 +38,7 @@ const {isLoggedIn} =
 
   return (
     <div className="App">
- <TestComponent/>
+
 {/* may not be needed */}
  {/* {isLoggedIn ? <EchangeApi/> : ""}  */}
 

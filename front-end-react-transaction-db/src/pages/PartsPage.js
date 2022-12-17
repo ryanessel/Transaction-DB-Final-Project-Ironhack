@@ -36,7 +36,19 @@ function getAllParts () {
         getAllParts()
     }, [])
 
+    const deletePart = (id) => {
+      axios
+      .delete(`${API_URL}/part/${id}`, {new: true})
+      .then(() => {
     
+       
+    getAllParts();
+    
+    
+        
+      })
+    
+    }
 
 // MAYBE THIS IS OKAY FOR ROUTE PROTECTION
 //BUT USING IF TO DISPLAY THE PAGE CAUSES ISSUES WHERE IT DOESN"T THIN IT IS LOGGED IN  
@@ -57,6 +69,7 @@ function getAllParts () {
 
 <thead className='addPartTableHead'>
  <tr>
+   <th>DELETE PART</th>  
    <th>PART NUMBER</th>  
    <th>DESCRIPTION</th>
    <th>MATERIAL</th>  
@@ -74,6 +87,7 @@ function getAllParts () {
         return(
    
  <tr>
+  <button onClick={()=> deletePart(part._id)  }>DELETEPART</button>
    <td> 
 
    <Link to={`/part/${part._id}`}>
@@ -105,7 +119,7 @@ function getAllParts () {
    </td>
   
    <td>
-   {Math.round(part.margin)} %
+   {Math.round((part.sell * 100 ) - (part.cost * 100)) /100} %
    </td>
   
  </tr>

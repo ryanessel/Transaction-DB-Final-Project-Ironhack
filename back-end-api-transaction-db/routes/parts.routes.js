@@ -74,4 +74,23 @@ router.put("/part/:partId", (req, res, next) => {
 
 
 
+router.delete('/part/:partId', (req, res, next) => {
+    const { partId } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(partId)) {
+        res.status(400).json({ message: "Specified id is not valid (may not exist)"});
+        return;
+    }
+
+    Part.findByIdAndRemove(partId)
+    .then(() => res.json({ message: `Project wtih ${partId} is removed succesfully.` }))
+    .catch(error => res.json(error))
+
+
+})
+
+
+
+
+
 module.exports = router;

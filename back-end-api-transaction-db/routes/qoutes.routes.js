@@ -36,24 +36,11 @@ console.log("quoteID",quoteId)
 //         //  theQuote.totalProfit = theQuote.totalSell - theQuote.totalCost;
         
 // adding new keys to the quote array
-        theQuote.totalSell = 0
-        theQuote.totalCost = 0
-        theQuote.totalProfit = 0
-        theQuote.marginPercent = 0
+// this bit is deleteing the data.
+//should be calculated on the fornt end.
+    
 
-        theQuote.quoteParts.map((thePart) => {
-
-            console.log("※※※※※MAP CHECK※※※※※", thePart)
-            console.log("※※※※※partCheck※※※※※", thePart.part)
-
-            console.log("※※※multiplication check※※※", thePart.part.cost * thePart.qty)
-
-            theQuote.totalCost += (thePart.part.cost * thePart.qty)
-            theQuote.totalSell += (thePart.part.sell * thePart.qty) 
-            theQuote.totalProfit = (theQuote.totalSell * 100 - theQuote.totalCost * 100 ) / 100
-            theQuote.marginPercent = ((theQuote.totalProfit * 100 / theQuote.totalSell * 100) / 100 )
-        })
-
+    
 
 
         // forEach loop
@@ -64,9 +51,7 @@ console.log("quoteID",quoteId)
         //
         
         res.json(theQuote)
-        console.log("-=-=-=-=qty=-=-=-=-", theQuote.quoteParts[0].qty)
-        console.log("-=-=-=-=sellPrice=-=-=-=-", theQuote.quoteParts[0].part.sell)
-    
+      
     });
      
     });
@@ -85,19 +70,81 @@ console.log("quoteID",quoteId)
         
         const {
         quoteNumber,
+        dateIssued,
+        validity,
+
+
         customer,
-        quoteParts           
+        contact,
+        address,    
+
+        notes,
+        
+        author,
+
+        quoteParts,
+        totalSell
+        
         } = req.body;
         
         Quote.create({
             quoteNumber,
+            dateIssued,
+            validity,
+
+
             customer,
-            quoteParts})
+            contact,
+            address,
+
+            notes,
+            author,
+            quoteParts,
+            totalSell
+        })
             .then((newQuote) => res.json(newQuote))
 
 
 
     })
+
+
+//EDIT PARTS - PUT ROUTE
+    router.put('/quote/:quoteId', (req, res, next) => {
+        const { quoteId } = req.params;
+    // if the project id doesn't exist then you and error message is thrown.
+        if(!mongoose.Types.ObjectId.isValid(quoteId)) {
+            res.status(400).json({message: "Specified id is not valid (may not exist)"});
+            return;
+        }
+    //...If it the id does exist it will find and update the projcet. havint "new: true " will show the page wit hthe updated info.
+        Quote.findByIdAndUpdate(quoteId, req.body, { new: true })
+        .then((updatedQuote) => res.json(updatedQuote))
+        .catch(error => res.json(error));
+    
+    
+    })
+    
+
+
+
+//DELETE 
+    router.delete('/quote/:quoteId', (req, res, next) => {
+        const { quoteId } = req.params;
+    
+        if (!mongoose.Types.ObjectId.isValid(quoteId)) {
+            res.status(400).json({ message: "Specified id is not valid (may not exist)"});
+            return;
+        }
+    
+        Quote.findByIdAndRemove(quoteId)
+        .then(() => res.json({ message: `Quote wtih ${quoteId} is removed succesfully.` }))
+        .catch(error => res.json(error))
+    
+    
+    })
+    
+
 
 
 

@@ -33,7 +33,8 @@ import React from 'react'
 
  <tr>
  <td >
-ADD MODEL
+
+{props.targetQuoteData.contact}
  </td> 
  
  </tr>
@@ -46,7 +47,7 @@ ADD MODEL
 
  <tr>
  <td >
-ADD MODEL
+ {props.targetQuoteData.address}
  </td> 
  
  </tr>

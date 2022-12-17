@@ -8,7 +8,8 @@ import bigDecimal from 'js-big-decimal';
 const API_URL = `http://localhost:5005`
 
  function QuoteFormPartsList ({newParts,
-  setNewParts}) {
+  setNewParts, totalSell, 
+updateTotalSell}) {
 const [grandTotal, setGrandTotal] =useState(0)
 //everyrthing typed
   //   const [newParts, setNewParts] = useState([{
@@ -127,7 +128,7 @@ return (
   
 // do I send the props through here?
 //do i get the part data from "parts"
-<QuoteFormRowExample part={part} index={index} updatePart={updatePart}  />
+<QuoteFormRowExample part={part} index={index} updatePart={updatePart} totalSell={totalSell}  grandTotal={getGrandTotal}  updateTotalSell={updateTotalSell} />
  
 
 
@@ -149,7 +150,7 @@ return (
   </table>
   {/* maybe a buttonn like submit i */}
  
- <button>submit</button>
+
   </form>
   </div>
 
@@ -159,12 +160,7 @@ return (
 
 
   
-        <div className='flexTotalAndNoteBox'>
   
-        <QuoteFormTotalBox grandTotal={getGrandTotal}/>
-       
-     
-        </div>
     </div>
   )
 }

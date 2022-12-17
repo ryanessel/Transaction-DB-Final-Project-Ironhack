@@ -170,10 +170,30 @@ input {
 
 .exchangeApi {
   position: fixed;
-  top: 500px;
-  left: 200px;
+  top: 12px;
+  left: 870px;
+
+}
+.exchangeApi input {
+width: 320px;
+
+}
+.exApiCurrencyColor {
+color: rgb(77, 241, 77);
+
 }
 
+.hideGrandTotalInput {
+
+  display: none;
+}
+
+
+.quoteUpdateBtn {
+
+  background-color: green;
+
+}
 
 .quoteForm {
   border: 3px solid grey;
@@ -455,7 +475,7 @@ width: 85vw;
 
 
 .quoteTopData {
-  border: 1px solid black;
+ 
   display: flex;
   justify-content: space-around;
 }
@@ -472,7 +492,7 @@ width: 85vw;
   display: flex;
   justify-content: space-around;
   flex-direction: row-reverse;
-  margin-top: 20px;
+  margin-top: 35px;
 }
 
 .quoteFormQty {

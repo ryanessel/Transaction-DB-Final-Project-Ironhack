@@ -1,6 +1,8 @@
 import React from 'react'
 
- function QuoteFormTotalBox(props) {
+ function QuoteFormTotalBox({grandTotal,
+  totalSell,
+  updateTotalSell}) {
   return (
     <div className='quoteFormTotalBox'>
                 <table className='recTotal'>
@@ -17,8 +19,19 @@ import React from 'react'
 
 <tbody>
  <tr>
- <td className='recordTotalCell'>
- $ {props.grandTotal()}
+ <td className='recordTotalCell'
+
+ >
+
+<input className='hideGrandTotalInput'
+ type="text"
+ value={`$ ${totalSell.sellTotal}`}
+ onChange={(e)=>{updateTotalSell(e, "sellTotal")}}
+ 
+/>
+
+ $ {totalSell.sellTotal = grandTotal()}
+ {console.log(" SELL TOLTAL on total page",totalSell.sellTotal)}
  </td>
   
  </tr>

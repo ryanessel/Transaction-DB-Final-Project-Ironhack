@@ -49,3 +49,34 @@ sell
 totalPartCost,
 grandtotal,
 notes
+
+
+
+
+
+
+QuoteEditForm is the MAIN component 
+
+<EditQuoteCustomerInfoBox/>
+<EditQuoteDataIssuedBox/>
+
+<EditQuotePartsList>
+---> <EditQuoteRowExample/> 
+
+
+<EditQuoteTotalBox /> 
+
+<EditQuoteNotesBox/>
+
+EditQuoteCustomerInfoBox.js
+EditQuoteDataIssuedBox.js
+
+EditQuotePartsList.js
+    EditQuoteRowExample.js
+
+
+EditQuoteTotalBox.js
+
+EditQuoteNoteBox.js
+
+touch EditQuoteCustomerInfoBox.js EditQuoteDataIssuedBox.js EditQuotePartsList.js EditQuoteRowExample.js EditQuoteTotalBox.js EditQuoteNoteBox.js

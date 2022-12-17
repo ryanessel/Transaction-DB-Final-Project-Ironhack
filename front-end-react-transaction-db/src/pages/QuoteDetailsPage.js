@@ -6,6 +6,8 @@ import QuoteRecordQuoteNumTag from "../components/subComponents/QuoteRecordQuote
 import QuoteRecordCustomerInfo from "../components/subComponents/QuoteRecordCustomerInfo";
 import QuoteRecordTotalBox from "../components/subComponents/QuoteRecordTotalBox";
 import QuoteRecordNotes from "../components/subComponents/QuoteRecordNotes";
+import QuoteEditForm from "../components/QuoteEditForm";
+import bigDecimal from "js-big-decimal";
 
 
 const API_URL = `http://localhost:5005`
@@ -15,6 +17,7 @@ const API_URL = `http://localhost:5005`
 
  function QuoteDetailsPage() {
   const [targetQuote, setTargetQuote] = useState("")
+  const [show, setShow] = useState(false);
   const { quoteId } = useParams(null)
  
 
@@ -35,7 +38,14 @@ const getQuoteDetails = () => {
 
 
   
-  
+console.log("TERGET QYTE", targetQuote.quoteParts && targetQuote.quoteParts[0].part.map((parto) =>{
+  return {
+
+parto
+
+  }
+
+}))
 
 
 useEffect(() => {
@@ -51,11 +61,31 @@ getQuoteDetails();
     <div className="quoteRecord">
 
 
+<button onClick={() => setShow(!show)}>
+{show ? "Cancel Changes" : "Edit Quote"}
+</button>
+{/* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓EDIT QUOTE SECTION↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */}
+{show &&
+  <>
+ 
+<QuoteEditForm updateQuoteRecord={getQuoteDetails} setShowState={setShow} showState={show}/>
+</>
+
+}
+
+{/*　↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑EDIT QUOTE SECTION↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */}
+
+
+{/* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓RECORD QUOTE SECTION↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */}
+
+{!show && 
+<>
+<h1>QUOTE RECORD</h1>
    
 
       <div className="QuoteBoxCustomerBox">
-      <QuoteRecordCustomerInfo customerName={targetQuote.customer}/>
-      <QuoteRecordQuoteNumTag quoteNumber={targetQuote.quoteNumber}/>
+      <QuoteRecordCustomerInfo customerName={targetQuote.customer} targetQuoteData={targetQuote} />
+      <QuoteRecordQuoteNumTag targetQuoteData={targetQuote}/>
       </div>
 
 
@@ -76,10 +106,10 @@ getQuoteDetails();
     </tr>
   </thead>
 
+    
       
 
-
-       {targetQuote.quoteParts &&  targetQuote.quoteParts.map((partsQuoted, index) => {
+       {targetQuote.quoteParts &&  targetQuote.quoteParts[0].part.map((partsQuoted, index) => {
           return (
             
 
@@ -92,19 +122,19 @@ getQuoteDetails();
                       </td>
 
                       <td>    
-                      {partsQuoted.part.partNumber}   
+                      {partsQuoted.partNumber}   
                       </td>
                 
                       <td> 
-                      {partsQuoted.part.partDescription}   
+                      {partsQuoted.partDescription}   
                       </td>
                 
                       <td>
-                      {partsQuoted.part.material} 
+                      {partsQuoted.material} 
                       </td>
                 {/* cost should be hidden at print */}
                       <td className="hideOnPrint">  
-                      {partsQuoted.part.cost}   
+                      {partsQuoted.cost}   
                       </td>
                 
                       <td>
@@ -116,7 +146,8 @@ getQuoteDetails();
                       </td> */}
 
                       <td>
-                      {partsQuoted.part.sell * partsQuoted.qty } 
+                        {/* this will change depending one what is updated in the database */}
+                      {bigDecimal.multiply(partsQuoted.sell, partsQuoted.qty) } 
                       </td>
 
 
@@ -131,14 +162,14 @@ getQuoteDetails();
           )
       })}
 </table>
-<QuoteRecordNotes/>
+<QuoteRecordNotes targetQuoteData={targetQuote}/>
 <br/>
 <QuoteRecordTotalBox totalSell={targetQuote.totalSell}/>
-<div> TOTAL: {targetQuote.totalSell}</div>
+<div> Issued By: {targetQuote.author}</div>
 
-
-
-
+</>
+}
+{/*　↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑RECORD QUOTE SECTION↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */}
   {/* maybe a buttonn like submit i */}
  
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function QuoteRecordNotes() {
+export default function QuoteRecordNotes(props) {
   return (
     <div className='quoteRecordNotes'>
         <table className='quoteRecordNotesTable'>
@@ -18,7 +18,7 @@ export default function QuoteRecordNotes() {
 <tbody>
  <tr>
  <td className='quoteNotes'>
-NOTES SHOW UP HERE
+ {props.targetQuoteData.notes}
  </td>
   
  </tr>

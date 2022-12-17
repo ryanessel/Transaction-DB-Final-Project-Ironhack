@@ -23,14 +23,14 @@ import React from 'react'
  <tr>
    
  <td >
-{props.quoteNumber}
+{props.targetQuoteData.quoteNumber}
  </td>
  <td >
-ADD TO QUOTE MODEL
+ {props.targetQuoteData.dateIssued}
  </td>
 
  <td >
-ADD TO QUOTE MODEL
+ {props.targetQuoteData.validity}
  </td>
   
  </tr>

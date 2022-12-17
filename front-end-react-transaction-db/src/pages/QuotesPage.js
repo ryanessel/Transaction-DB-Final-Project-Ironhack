@@ -34,12 +34,24 @@ getAllQuotes();
 
 
 
-
+const deleteQuote = (id) => {
+    axios
+    .delete(`${API_URL}/quote/${id}`, {new: true})
+    .then(() => {
+  
+     
+  getAllQuotes();
+  
+  
+      
+    })
+  
+  }
   return (
     <div>
-        <h1 id="shadow">Quotes Page</h1>
-        <AddQuote updateQuotes={getAllQuotes}/>
-        <AddPart/>
+        <h1 id="shadow">Quote List Page</h1>
+        <h4>Click on the Number of the quote you would like to view</h4>
+        
 
     {quotes.length > 0 && quotes.map((quote) => {
         return (
@@ -47,18 +59,10 @@ getAllQuotes();
                 <div key={quote._id} className='quoteBox'>
                    <Link to={`/quote/${quote._id}`}> <h2>Quote # {quote.quoteNumber}</h2></Link>
                       <h2>Customer: {quote.customer}</h2>  
+                      <button onClick={()=> deleteQuote(quote._id)}>DELETE QUOTE</button>
                     <div className='quotedParts'>
-                        {quote.quoteParts.map((quotePart) => {
-                            return(
-                                <div key={quotePart._id} className='quotePart'>
-                                    <hr />
-                                    <div>PN: {quotePart.partNumber}</div>
-                                    <div>Description: {quotePart.partDescription}</div>
-                                    <div>Material: {quotePart.material}</div>
-                                    <div>Sell: {quotePart.sell}</div>
-                                </div>
-                            )
-                        })}
+                     
+                     
                     </div>
 
 

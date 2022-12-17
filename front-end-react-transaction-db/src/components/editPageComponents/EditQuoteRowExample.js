@@ -1,41 +1,29 @@
-import axios from 'axios';
 import React from 'react'
-import { useEffect, useState } from 'react';
-import bigDecimal from 'js-big-decimal';
-import QuoteFormTotalBox from './QuoteFormTotalBox';
 
-const API_URL = `http://localhost:5005`
+function EditQuoteRowExample({part, updatePart, index, totalSell,
+    grandTotal,
+    updateTotalSell}) {
 
- function QuoteFormRowExample({part, updatePart, index, totalSell,
-  grandTotal,
-  updateTotalSell}) {
-
-
- const {        
-  cost,
-  margin,
-  qty,
-  sell ,
- 
-  no,
-  partNumber,
-  partDescription,
-  material,
-
-  //calculated
-  profit,
-  } = part
-
-
+        const {        
+            cost,
+            margin,
+            qty,
+            sell ,
+           
+            no,
+            partNumber,
+            partDescription,
+            material,
+          
+            //calculated
+            profit,
+            } = part
 
 
 
 
   return (
-
-     
-
- <>
+    <>
 
 
 
@@ -129,13 +117,8 @@ const API_URL = `http://localhost:5005`
 
 
     </>
-
-
-
-  
-    
   )
 }
 
 
-export default QuoteFormRowExample;
+export default EditQuoteRowExample

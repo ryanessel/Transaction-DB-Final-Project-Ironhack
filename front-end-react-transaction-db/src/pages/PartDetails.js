@@ -78,16 +78,18 @@ getPartInfo()
 }, [])
 
 
+
+
   return (
     <div>
-     <h1>PartDetails</h1>   
+   
     {targetPart && (
       <div>
           <div>PN: {targetPart.partNumber}</div>
           <div>Description: {targetPart.partDescription}</div>
           <div>Cost: {targetPart.cost}</div>
           <div>Sell: {targetPart.sell}</div>
-          <div>Margin: {Math.round(targetPart.margin * 100) /100} % ※NOTE: rounded to 2 decimal places</div>          
+          <div>Margin: {Math.round((targetPart.sell * 100 ) - (targetPart.cost * 100)) /100} % ※NOTE: rounded to 2 decimal points at the most</div>          
       </div>
       
       
@@ -97,6 +99,9 @@ getPartInfo()
     <button onClick={() => setShow(!show)}>
       {show ? "Hide FORM" : "Edit Part"}
     </button>
+  
+  
+
 
       {show && 
       <div className='editablePart'> 
