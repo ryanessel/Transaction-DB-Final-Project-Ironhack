@@ -117,9 +117,43 @@ console.log("quoteID",quoteId)
             res.status(400).json({message: "Specified id is not valid (may not exist)"});
             return;
         }
+console.log("PUT THING",req.body)
+     
     //...If it the id does exist it will find and update the projcet. havint "new: true " will show the page wit hthe updated info.
-        Quote.findByIdAndUpdate(quoteId, req.body, { new: true })
-        .then((updatedQuote) => res.json(updatedQuote))
+        Quote.findByIdAndUpdate(quoteId, {  
+
+            address: req.body.address,
+
+            quoteNumber: req.body.quoteNumber,
+            dateIssued: req.body.dateIssued,
+            validity: req.body.validity,
+
+
+            customer: req.body.customer,
+            contact: req.body.contact,
+            address: req.body.address,
+
+            notes: req.body.notes,
+            author: req.body.author,
+            
+            totalSell: req.body.totalSell,
+        
+        },{ new: true })
+        .then((updatedQuote) =>{ 
+            
+            
+            Quote.findByIdAndUpdate(quoteId, 
+                { $set:  {quoteParts:  req.body.newParts }}, {new: true}   )
+                .then((finalQuote)=> {
+
+                    res.json(finalQuote)
+                })
+            
+          })
+
+
+
+
         .catch(error => res.json(error));
     
     

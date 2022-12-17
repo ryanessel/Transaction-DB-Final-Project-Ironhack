@@ -159,7 +159,7 @@ function getAllParts () {
       author: user.name,
 // can't get teh console log in this page but it gets the correct show stuff
       totalSell: totalSell.sellTotal,
-      quoteParts: [{part: newParts }]
+      quoteParts:  newParts 
 
     }
 

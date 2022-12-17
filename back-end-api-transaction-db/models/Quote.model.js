@@ -18,8 +18,8 @@ const quoteSchema = new Schema ({
                     qty: Number}],
                     
                     
-    quoteParts: [{part:{ type: Object}}],           
-                    
+    quoteParts: [{ type: Object}],           
+    // quoteParts: [{part:{ type: Object}}],            
                     // can't see  in mongodb but can see if you look at the API URL
     // ownere will be added later on
     totalSell: Number,//i guess this should be calculated before the data is sent to this key

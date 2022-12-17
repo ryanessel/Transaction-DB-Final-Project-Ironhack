@@ -38,14 +38,7 @@ const getQuoteDetails = () => {
 
 
   
-console.log("TERGET QYTE", targetQuote.quoteParts && targetQuote.quoteParts[0].part.map((parto) =>{
-  return {
 
-parto
-
-  }
-
-}))
 
 
 useEffect(() => {
@@ -109,7 +102,7 @@ getQuoteDetails();
     
       
 
-       {targetQuote.quoteParts &&  targetQuote.quoteParts[0].part.map((partsQuoted, index) => {
+       {targetQuote.quoteParts &&  targetQuote.quoteParts.map((partsQuoted, index) => {
           return (
             
 

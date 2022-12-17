@@ -97,6 +97,8 @@ function QuoteEditForm({updateQuoteRecord, setShowState, showState}) {
             dateIssued: quoteInfo.dateIssued,
             validity: quoteInfo.validity,
 
+            quoteParts: newParts 
+
         }
     
         axios
@@ -112,6 +114,8 @@ function QuoteEditForm({updateQuoteRecord, setShowState, showState}) {
     
     }
     
+console.log("EUOTE EDIT NEW PARTS", newParts)
+
     const getQuoteInfo = () => {
 
         axios
@@ -133,28 +137,7 @@ function QuoteEditForm({updateQuoteRecord, setShowState, showState}) {
 
             })
 
-            setNewParts([
-
-                response.quoteParts[0].part.map((part) => {
-// NOT sURE HOW TO MAKE THE ROWS THEN ADD THE EXISTING DATA FROM THE QUOTE PARTS ARRAY
-                    
-                        // no: "",
-                        // partNumber: "",
-                        // partDescription: "",
-                        // material: "",
-                        // cost: "",
-                        // margin: "",
-                        // qty: "",
-                        // sell:"",
-                        // rowTotal: "",
-                        // profit: "",  
-
-                    
-
-
-                })
-     
-        ])
+            setNewParts(response.data.quoteParts)
 
          })
          .catch(err => console.log(err))
@@ -180,6 +163,7 @@ console.log(customerInfo)
             setQuoteInfo({...quoteInfo, [thingToUpdate]: e.target.value})
           }
 
+        console.log("NEW newparts check",newParts)
 
   return (
     <div className="quoteEditForm">
@@ -192,6 +176,7 @@ console.log(customerInfo)
 <EditQuoteDataIssuedBox updateQteInfo={updateQuoteForm} qteInfo={quoteInfo}  />
 </div>
 
+{console.log("QUOTE EDIT MAIN PAGE PARTS CHECK", newParts)}
 <EditQuotePartsList newParts={newParts} setNewParts={setNewParts}  grandTotal={getGrandTotal} totalSell={totalSell} updateTotalSell={updateTotalSell}/>
 
 

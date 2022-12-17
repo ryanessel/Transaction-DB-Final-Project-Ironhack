@@ -8,27 +8,9 @@ import { useState } from 'react';
   updateTotalSell}) {
 
     const [grandTotal, setGrandTotal] =useState(0)
-    //everyrthing typed
-      //   const [newParts, setNewParts] = useState([{
-    
-      //     no: "",
-      //     partNumber: "",
-      //     partDescription: "",
-      //     material: "",
-      //     cost: "",
-      //     margin: "",
-      //     qty: "",
-      //     sell:"",
-      //     rowTotal: "",
-      //     profit: "",
-         
-       
-    
-    
-      // } ])
-              
+ 
+      console.log("edit parts list page newParts", newParts)
       
-      console.log(newParts)
     const addRow = () => {
     const copyNewParts = [...newParts]; // makes a copay of aarray
     copyNewParts.push({      
@@ -119,7 +101,7 @@ import { useState } from 'react';
     {/* THE ROWS NEED ACCESS TO THE parts database so  i can have it auto populate when the part number is correct */}
 
 
-{newParts.map((part, index) => {
+{newParts && newParts.map((part, index) => {
 return (
   
 // do I send the props through here?
